@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "reqres-ibs"
+version = "0.1.0"
+description = ""
+authors = ["Vladislav <djefry.kamen@gmail.com>"]
+readme = "README.md"
+packages = [{include = "reqres_ibs"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.3.1"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
