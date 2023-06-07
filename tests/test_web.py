@@ -63,7 +63,7 @@ class TestMainRequests:
         }
         response_status_code = 200
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(
             have.text(json.dumps(obj=json_response, indent=4))
@@ -90,7 +90,7 @@ class TestMainRequests:
         }
         response_status_code = 200
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element("[data-id=users-single]").click()
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(
@@ -111,7 +111,7 @@ class TestMainRequests:
         json_response = {}
         response_status_code = 404
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element("[data-id=users-single-not-found]").click()
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(
@@ -127,7 +127,7 @@ class TestMainRequests:
         text_in_json_response = '"name": "morpheus",\n    "job": "leader"'
         response_status_code = 201
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element("[data-id=post]").click()
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(
@@ -148,7 +148,7 @@ class TestMainRequests:
         text_in_json_response = '"name": "morpheus",\n    "job": "zion resident"'
         response_status_code = 200
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element("[data-id=put]").click()
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(
@@ -170,7 +170,7 @@ class TestMainRequests:
         text_in_json_response = '"name": "morpheus",\n    "job": "zion resident"'
         response_status_code = 200
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element("[data-id=patch]").click()
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(
@@ -192,7 +192,7 @@ class TestMainRequests:
         json_response = ""
         response_status_code = 204
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element("[data-id=delete]").click()
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(have.text(json_response))
@@ -206,7 +206,7 @@ class TestMainRequests:
         json_response = {"id": 4, "token": "QpwL5tke4Pnpja7X4"}
         response_status_code = 200
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element("[data-id=register-successful]").click()
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(
@@ -225,7 +225,7 @@ class TestMainRequests:
         json_response = {"error": "Missing password"}
         response_status_code = 400
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element("[data-id=register-unsuccessful]").click()
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(
@@ -243,7 +243,7 @@ class TestMainRequests:
         json_response = {"token": "QpwL5tke4Pnpja7X4"}
         response_status_code = 200
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element("[data-id=login-successful]").click()
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(
@@ -262,7 +262,7 @@ class TestMainRequests:
         json_response = {"error": "Missing password"}
         response_status_code = 400
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element("[data-id=login-unsuccessful]").click()
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(
@@ -333,7 +333,7 @@ class TestMainRequests:
         }
         response_status_code = 200
 
-        browser.open("https://reqres.in/")
+        browser.open("")
         browser.element("[data-id=delay]").click()
         browser.element(".response-code").should(have.text(f"{response_status_code}"))
         browser.element('[data-key="output-response"]').should(
