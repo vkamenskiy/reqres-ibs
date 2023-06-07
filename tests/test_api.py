@@ -253,35 +253,40 @@ class TestPostCreate:
         assert response.status_code == 201
 
     def test_create_user_with_name(self):
-        response = requests.post(
-            "https://reqres.in/api/users", {"name": "morpheus"}
-        )
+        response = requests.post("https://reqres.in/api/users", {"name": "morpheus"})
         name = response.json()["name"]
 
         assert name == "morpheus"
         assert response.status_code == 201
 
     def test_create_user_with_job(self):
-        response = requests.post(
-            "https://reqres.in/api/users", {"job": "leader"}
-        )
+        response = requests.post("https://reqres.in/api/users", {"job": "leader"})
         job = response.json()["job"]
 
         assert job == "leader"
         assert response.status_code == 201
 
     def test_create_user_with_empty_data(self):
-        response = requests.post(
-            "https://reqres.in/api/users"
-        )
+        response = requests.post("https://reqres.in/api/users")
 
         assert response.status_code == 201
 
 
 class TestPutUpdate:
+    def test_update_name_and_job(self):
+        response = requests.put(
+            "https://reqres.in/api/users/2", {"name": "neo", "job": "hero"}
+        )
+        name = response.json()["name"]
+        job = response.json()["job"]
+
+        assert name == "neo"
+        assert job == "hero"
+        assert response.status_code == 200
+
     def test_update_only_job(self):
         response = requests.put(
-            "https://reqres.in/api/users/9", {"job": "zion resident"}
+            "https://reqres.in/api/users/2", {"job": "zion resident"}
         )
         job = response.json()["job"]
 
@@ -289,30 +294,28 @@ class TestPutUpdate:
         assert response.status_code == 200
 
     def test_update_only_name(self):
-        response = requests.put(
-            "https://reqres.in/api/users/9", {"name": "morpheus"}
-        )
+        response = requests.put("https://reqres.in/api/users/2", {"name": "morpheus"})
         name = response.json()["name"]
 
         assert name == "morpheus"
-        assert response.status_code == 200
-
-    def test_update_name_and_job(self):
-        response = requests.put(
-            "https://reqres.in/api/users/9", {"name": "neo", "job": "hero"}
-        )
-        name = response.json()["name"]
-        job = response.json()["job"]
-
-        assert name == "neo"
-        assert job == "hero"
         assert response.status_code == 200
 
 
 class TestPatchUpdate:
+    def test_update_name_and_job(self):
+        response = requests.patch(
+            "https://reqres.in/api/users/2", {"name": "neo", "job": "hero"}
+        )
+        name = response.json()["name"]
+        job = response.json()["job"]
+
+        assert name == "neo"
+        assert job == "hero"
+        assert response.status_code == 200
+
     def test_update_only_job(self):
         response = requests.patch(
-            "https://reqres.in/api/users/9", {"job": "zion resident"}
+            "https://reqres.in/api/users/2", {"job": "zion resident"}
         )
         job = response.json()["job"]
 
@@ -320,23 +323,10 @@ class TestPatchUpdate:
         assert response.status_code == 200
 
     def test_update_only_name(self):
-        response = requests.patch(
-            "https://reqres.in/api/users/9", {"name": "morpheus"}
-        )
+        response = requests.patch("https://reqres.in/api/users/2", {"name": "morpheus"})
         name = response.json()["name"]
 
         assert name == "morpheus"
-        assert response.status_code == 200
-
-    def test_update_name_and_job(self):
-        response = requests.patch(
-            "https://reqres.in/api/users/9", {"name": "neo", "job": "hero"}
-        )
-        name = response.json()["name"]
-        job = response.json()["job"]
-
-        assert name == "neo"
-        assert job == "hero"
         assert response.status_code == 200
 
 
@@ -364,13 +354,17 @@ class TestPostRegister:
         assert response.json() == {"id": 4, "token": "QpwL5tke4Pnpja7X4"}
 
     def test_register_without_password(self):
-        response = requests.post("https://reqres.in/api/register", {"email": "sydney@fife"})
+        response = requests.post(
+            "https://reqres.in/api/register", {"email": "sydney@fife"}
+        )
 
         assert response.status_code == 400
         assert response.json() == {"error": "Missing password"}
 
     def test_register_without_email(self):
-        response = requests.post("https://reqres.in/api/register", {"password": "pistol"})
+        response = requests.post(
+            "https://reqres.in/api/register", {"password": "pistol"}
+        )
 
         assert response.status_code == 400
         assert response.json() == {"error": "Missing email or username"}
@@ -387,13 +381,17 @@ class TestPostLogin:
         assert response.json() == {"token": "QpwL5tke4Pnpja7X4"}
 
     def test_login_without_password(self):
-        response = requests.post("https://reqres.in/api/login", {"email": "peter@klaven"})
+        response = requests.post(
+            "https://reqres.in/api/login", {"email": "peter@klaven"}
+        )
 
         assert response.status_code == 400
         assert response.json() == {"error": "Missing password"}
 
     def test_login_without_email(self):
-        response = requests.post("https://reqres.in/api/login", {"password": "cityslicka"})
+        response = requests.post(
+            "https://reqres.in/api/login", {"password": "cityslicka"}
+        )
 
         assert response.status_code == 400
         assert response.json() == {"error": "Missing email or username"}
